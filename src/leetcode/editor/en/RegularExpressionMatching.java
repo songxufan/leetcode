@@ -103,7 +103,7 @@ class Solution {
                             match[i][j] = match[i-1][j] || match[i][j-2];
                         } else {
                             // 匹配p的上一个零次，把a*一起匹配掉
-                            // 保证了*前面一定有东西
+                            // 保证了*前面一定有东西m
                             match[i][j] = match[i][j-2];
                         }
                     } else if (pChars[j-1] == '.' || pChars[j-1] == sChars[i-1]) {
