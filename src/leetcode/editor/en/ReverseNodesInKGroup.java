@@ -76,7 +76,7 @@ class Solution {
     public ListNode reverseKGroup(ListNode head, int k) {
         if (head == null) return null;
         if (k == 1) return head;
-        // 首先反转前k个，找到开头和结尾(左开右闭)
+        // 首先反转前k个，找到开头和结尾(左闭右开)
         ListNode a = head;
         ListNode b = head;
         for (int i = 1; i <= k; i += 1) {
