@@ -64,23 +64,20 @@ class Solution {
         // preL和preR是遍历preorder数组的边界，两端均包括，inL和inR含义类似
         if (preL > preR || inL > inR) return null;
         // preorder的第一个是root
-        TreeNode result = new TreeNode(preorder[preL]);
+        int rootVal = preorder[preL];
+        TreeNode result = new TreeNode(rootVal);
         // 在inorder中找到root，左边是left，右边是right
         // preorder中的left和right和inorder中的长度相同
         int rootIndex = -1;
         for (int i = inL; i <= inR; i += 1) {
-            if (preorder[preL] == inorder[i]) {
+            if (rootVal == inorder[i]) {
                 rootIndex = i;
                 break;
             }
         }
         int leftLength = rootIndex - inL;
-        int rightLength = inR - rootIndex;
-        int newLeftPreL = preL + 1;
-        int newLeftPreR = preL + rootIndex - inL;
-        int newRightPreL = newLeftPreR + 1;
-        result.left = buildTreeWithBound(preorder, newLeftPreL, newLeftPreR, inorder, inL, rootIndex - 1);
-        result.right = buildTreeWithBound(preorder, newRightPreL, preR, inorder, rootIndex + 1, inR);
+        result.left = buildTreeWithBound(preorder, preL + 1, preL + leftLength, inorder, inL, rootIndex - 1);
+        result.right = buildTreeWithBound(preorder, preL + leftLength + 1, preR, inorder, rootIndex + 1, inR);
         return result;
     }
 }
