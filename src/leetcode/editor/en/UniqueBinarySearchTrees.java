@@ -29,8 +29,6 @@
 
 package leetcode.editor.en;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class UniqueBinarySearchTrees {
     public static void main(String[] args) {
