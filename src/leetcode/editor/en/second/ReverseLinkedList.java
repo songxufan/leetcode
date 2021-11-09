@@ -103,6 +103,18 @@ public class ReverseLinkedList {
         start.next = prev;
         return sentinel.next;
     }
+
+    // 每k个一组翻转list
+    public ListNode reverseListByKNodes(ListNode head, int k) {
+        ListNode curr = head;
+        for (int i = 0; i < k; i++) {
+            if (curr == null) return head;
+            curr = curr.next;
+        }
+        ListNode reversed = reverseFirstNNodes(head, k);
+        head.next = reverseListByKNodes(curr, k);
+        return reversed;
+    }
 }
 
 // 假设reverse 1->2->3->4得到的结果是1<-2<-3<-4 此时head为1
